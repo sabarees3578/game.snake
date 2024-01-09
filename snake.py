@@ -2,16 +2,25 @@ import pygame
 import random
 import time
 pygame.init()
+#screen size
+
 screen_w=1000
 screen_h=1000
 screen=pygame.display.set_mode((screen_w,screen_h))
+#do not the val in func 
+
+
 class player:
     def __init__(self,x,y,w,h): 
      self.x=x
      self.y=y
      self.w=w
      self.h=h
-     self.speed=4
+     #speedu...
+     self.speed=5
+     #val 1 to 5 vara tha 
+
+
      self.dx=0
      self.dy=0
      self.dir="RIGHT"
@@ -56,13 +65,18 @@ class player:
         elif self.y<0:
             self.y=screen_h
 
+
+# do food colr 
+            
 class Food:
     def __init__(self,size):
         self.x=random.randint(0,screen_w)
         self.y=random.randint(0,screen_h)
         self.size=size
-        self.blue=(0,225,0)
+        self.blue=(0,0,225)
 
+# call and val
+        
 food=Food(25)
 player=player(50,50,50,50)
 red=(225,0,0)
@@ -74,7 +88,7 @@ while True:
       if event.type==pygame.QUIT:
          pygame.quit()
          exit()
-    
+    #kela main code du da aathaulm change sayatha da
    key=pygame.key.get_pressed()
 
    if key[pygame.K_RIGHT]:
@@ -95,6 +109,7 @@ while True:
           foodbox =pygame.draw.circle(screen,food.blue,(food.x,food.y),food.size)
           if playerbox.colliderect(foodbox):
              food=Food(25)
+             
              player.l +=10
 
    player.list.append([player.x,player.y])
@@ -105,7 +120,7 @@ while True:
        time.sleep(2)
        player.list.clear()
        player.l=1
-   screentext=font.render(f"score -{player.l-1}",True,(225,225,225))
+   screentext=font.render(f"score -{int((player.l-1)/10)}",True,(225,225,225))
    screen.blit(screentext,(10,10))
    pygame.display.update()
    clock.tick(60)
