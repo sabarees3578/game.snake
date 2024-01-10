@@ -120,7 +120,9 @@ while True:
        time.sleep(2)
        player.list.clear()
        player.l=1
+   screentextgod=font.render("GODGAMING",True,(225,225,225))
    screentext=font.render(f"score -{int((player.l-1)/10)}",True,(225,225,225))
    screen.blit(screentext,(10,10))
+   screen.blit(screentextgod,(450,10))
    pygame.display.update()
    clock.tick(60)
