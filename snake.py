@@ -16,7 +16,7 @@ class player:
      self.y=y
      self.w=w
      self.h=h
-     #speedu...
+     #speedu sopeedu... speeduuu
      self.speed=5
      #val 1 to 5 vara tha 
 
@@ -91,13 +91,13 @@ while True:
     #kela main code du da aathaulm change sayatha da
    key=pygame.key.get_pressed()
 
-   if key[pygame.K_RIGHT]:
+   if key[pygame.K_RIGHT] or key[pygame.K_d]:
          player.chdir("RIGHT")
-   elif key[pygame.K_LEFT]:
+   elif key[pygame.K_LEFT] or key[pygame.K_a]:
          player.chdir("LEFT")
-   elif key[pygame.K_UP]:
+   elif key[pygame.K_UP] or key[pygame.K_w]:
          player.chdir("UP")
-   elif key[pygame.K_DOWN]:
+   elif key[pygame.K_DOWN] or key[pygame.K_s]:
          player.chdir("DOWN") 
    player.move()
    player.boder()
@@ -105,7 +105,7 @@ while True:
    player.y=player.y+player.dy
    screen.fill(black)
    for x,y in player.list:
-          playerbox = pygame.draw.rect(screen,red,(x,y,player.w,player.h))
+          playerbox = pygame.draw.circle(screen,red,(x+7,y+7),30)
           foodbox =pygame.draw.circle(screen,food.blue,(food.x,food.y),food.size)
           if playerbox.colliderect(foodbox):
              food=Food(25)
