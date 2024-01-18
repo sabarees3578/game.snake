@@ -35,7 +35,7 @@ class player:
             self.dir="UP"
         elif user=="DOWN" and self.dir!="UP":
             self.dir="DOWN"
-    def move(self):
+    def move(self):  #movement ---contoler--
         if self.dir=="UP":
              player.dy=0
              player.dy=player.dy-player.speed
@@ -89,16 +89,17 @@ while True:
          pygame.quit()
          exit()
     #kela main code du da aathaulm change sayatha da
-   key=pygame.key.get_pressed()
-
-   if key[pygame.K_RIGHT] or key[pygame.K_d]:
+   key=pygame.key.get_pressed() # input form keybord
+    # game contorl input
+   if key[pygame.K_RIGHT] or key[pygame.K_d]: #-->
          player.chdir("RIGHT")
-   elif key[pygame.K_LEFT] or key[pygame.K_a]:
+   elif key[pygame.K_LEFT] or key[pygame.K_a]:#<--
          player.chdir("LEFT")
-   elif key[pygame.K_UP] or key[pygame.K_w]:
+   elif key[pygame.K_UP] or key[pygame.K_w]:#/\
          player.chdir("UP")
-   elif key[pygame.K_DOWN] or key[pygame.K_s]:
+   elif key[pygame.K_DOWN] or key[pygame.K_s]:#\/
          player.chdir("DOWN") 
+    #game loop
    player.move()
    player.boder()
    player.x=player.x+player.dx
@@ -120,9 +121,11 @@ while True:
        time.sleep(2)
        player.list.clear()
        player.l=1
-   screentextgod=font.render("GODGAMING",True,(225,225,225))
-   screentext=font.render(f"score -{int((player.l-1)/10)}",True,(225,225,225))
-   screen.blit(screentext,(10,10))
-   screen.blit(screentextgod,(450,10))
+
+    #text output ---> screen and score
+   screentextHEAD=font.render("SNAKE GAME IN PYTHON",True,(225,225,225))#HEADING
+   screentext=font.render(f"score -{int((player.l-1)/10)}",True,(225,225,225))#SCORE  
+   screen.blit(screentext,(screen_h-150,screen_w-100))#POSITION OF SCORE
+   screen.blit(screentextHEAD,(400,10))#POSITION OF HEADING 
    pygame.display.update()
    clock.tick(60)
